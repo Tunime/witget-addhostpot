@@ -15,12 +15,33 @@
 </template>
 
 <script>
+var shsopots=[];
 export default {
   name: 'admin',
-  data () {
-    return {
-      msg: 'no lo se rick'
-    }
+  data(){
+            datoss: localStorage.getItem("istitlekey").length
+        },
+  methods:{
+      addhostpot:function(event){
+          var miObjeto = new Object();
+          miObjeto.scaleY = document.querySelector("#scaley").value;
+          document.querySelector("#scaley").value='';
+          miObjeto.scaleX = document.querySelector("#scalex").value;
+          document.querySelector("#scalex").value='';
+          miObjeto.stitle = document.querySelector("#mstitle").value;
+          document.querySelector("#mstitle").value='';
+          miObjeto.ssubtitle = document.querySelector("#mssubtitle").value;
+          document.querySelector("#mssubtitle").value='';
+          miObjeto.sdescription = document.querySelector("#msdescription").value;
+          document.querySelector("#msdescription").value='';
+          miObjeto.surl = document.querySelector("#msurl").value;
+          document.querySelector("#msurl").value='';
+          shsopots.push(miObjeto);
+
+          localStorage.setItem("istitlekey",JSON.stringify(shsopots));
+          $("#alvarus").remove();
+          $("#btnadd").css("display", "none");
+      }
   }
 }
 </script>
@@ -87,4 +108,15 @@ export default {
             margin: 0 0 0.5em 0;
             font-size: 0.9rem;
         }
+  #posts{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    background: #1ABC9C;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 200;
+    margin-left: -10px;
+    margin-top: -10px;
+    }
 </style>
