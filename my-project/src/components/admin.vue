@@ -8,39 +8,43 @@
             <a class="admin--edit--btn--btnaction" href="#">edit</a>
         </li>
         <div id="forinputs"></div>
-        <li id="btnadd" class="admin--edit--add--btn" style="display: none;">
-            <a @click="addhostpot" class="admin--edit--add--btnaction" href="#">Save</a>
+        <li id="btnadd" class="admin--edit--btn" style="display: none;">
+          <a @click="addhostpot" class="admin--edit--btn--btnaction" href="#">Save</a>
         </li>
     </div>
 </template>
 
 <script>
 var shsopots=[];
+var ban=0, bann=0;
 export default {
   name: 'admin',
   data(){
-            datoss: localStorage.getItem("istitlekey").length
-        },
+        return {datoss: localStorage.getItem("istitlekey").length}
+    },
   methods:{
       addhostpot:function(event){
-          var miObjeto = new Object();
-          miObjeto.scaleY = document.querySelector("#scaley").value;
-          document.querySelector("#scaley").value='';
-          miObjeto.scaleX = document.querySelector("#scalex").value;
-          document.querySelector("#scalex").value='';
-          miObjeto.stitle = document.querySelector("#mstitle").value;
-          document.querySelector("#mstitle").value='';
-          miObjeto.ssubtitle = document.querySelector("#mssubtitle").value;
-          document.querySelector("#mssubtitle").value='';
-          miObjeto.sdescription = document.querySelector("#msdescription").value;
-          document.querySelector("#msdescription").value='';
-          miObjeto.surl = document.querySelector("#msurl").value;
-          document.querySelector("#msurl").value='';
-          shsopots.push(miObjeto);
+         var miObjeto = new Object();
+            ban++;
+            miObjeto.sid = ban;
+            miObjeto.scaleY = document.querySelector("#scaley").value;
+            document.querySelector("#scaley").value='';
+            miObjeto.scaleX = document.querySelector("#scalex").value;
+            document.querySelector("#scalex").value='';
+            miObjeto.stitle = document.querySelector("#mstitle").value;
+            document.querySelector("#mstitle").value='';
+            miObjeto.ssubtitle = document.querySelector("#mssubtitle").value;
+            document.querySelector("#mssubtitle").value='';
+            miObjeto.sdescription = document.querySelector("#msdescription").value;
+            document.querySelector("#msdescription").value='';
+            miObjeto.surl = document.querySelector("#msurl").value;
+            document.querySelector("#msurl").value='';
+            shsopots.push(miObjeto);
 
-          localStorage.setItem("istitlekey",JSON.stringify(shsopots));
-          $("#alvarus").remove();
-          $("#btnadd").css("display", "none");
+            localStorage.setItem("istitlekey",JSON.stringify(shsopots));
+            $("#alvarus").remove();
+            $("#btnadd").css("display", "none");
+            bann=0;
       }
   }
 }
